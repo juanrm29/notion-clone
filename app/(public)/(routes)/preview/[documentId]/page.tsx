@@ -10,7 +10,6 @@ import { Toolbar } from "@/components/toolbar";
 import { Cover } from "@/components/cover";
 import { Skeleton } from "@/components/ui/skeleton";
 
-
 interface DocumentIdPageProps {
   params: {
     documentId: Id<"documents">;
@@ -55,18 +54,19 @@ const DocumentIdPage = ({
     return <div>Not found</div>
   }
 
-  return (
+  return ( 
     <div className="pb-40">
-      <Cover url={document.coverImage} />
+      <Cover preview url={document.coverImage} />
       <div className="md:max-w-3xl lg:max-w-4xl mx-auto">
-        <Toolbar initialData={document} />
+        <Toolbar preview initialData={document} />
         <Editor
+          editable={false}
           onChange={onChange}
           initialContent={document.content}
         />
       </div>
     </div>
-   );
+  );
 }
-
+ 
 export default DocumentIdPage;
